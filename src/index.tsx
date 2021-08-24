@@ -7,13 +7,14 @@ import ReactDOM from 'react-dom';
 // import { SimpleForm } from './components/02-useEffect/SimpleForm';
 // import { HookApp } from './HookApp';
 // import { FocusScreen } from './components/04-useRef/FocusScreen';
-import { RealExampleRef } from './components/04-useRef/RealExampleRef';
+// import { RealExampleRef } from './components/04-useRef/RealExampleRef';
+import { Layout } from './components/05-useLayoutEffect/LayoutEffect';
 import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
   <br/>
-    <RealExampleRef/>
+    <Layout/>
   </React.StrictMode>,
   document.getElementById('root')
 );
