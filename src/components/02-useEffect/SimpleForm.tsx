@@ -11,15 +11,10 @@ const SimpleForm = ()=>{
     const {name, email } = formState
 
     useEffect( ()=> {
-        // console.log('Hey!');
     }, [] );
-
     useEffect( ()=> {
-        // console.log('Hey fromState cambio');
     }, [formState] );
-
     useEffect( ()=> {
-        // console.log('Hey', email);
     }, [email] );
     
 

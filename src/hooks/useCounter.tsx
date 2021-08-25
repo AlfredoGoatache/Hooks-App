@@ -21,7 +21,8 @@ return{
     counter,
     increment,
     decrement,
-    reset
+    reset,
+    setCounter
 };
 
 }

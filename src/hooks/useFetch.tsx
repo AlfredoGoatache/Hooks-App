@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
+import { useCounter } from './useCounter';
 
-const useFetch = (url:string) => {
+const useFetch = (url:string, counter: number = 0) => {
 
     const isMounted = useRef(true);
 
@@ -8,7 +9,7 @@ const useFetch = (url:string) => {
 
     useEffect( ()=>{
 
-        return() =>{isMounted.current=false};
+        return() =>{isMounted.current=true};
 
     }, [])
 
@@ -16,19 +17,27 @@ const useFetch = (url:string) => {
 
         setState({ data: [], loading: true, error: null });
 
-        fetch(url)
+        fetch(url, {referrer: "randomnumberapi.com"})
             .then( resp => resp.json() )
             .then( data => {
-                if(isMounted.current){
-                    setState({
-                        loading:false,
-                        error: null,
-                        data: data
-                    })
-                }   
+                console.log("fetch data", data);
+
+                setState({
+                    loading:false,
+                    error: null,
+                    data: data
+                })
+
+                // if(isMounted.current){
+                //     setState({
+                //         loading:false,
+                //         error: null,
+                //         data: data
+                //     })
+                // }   
             })
 
-    },[url]);
+    },[url, counter]);
 
     return state;
 }

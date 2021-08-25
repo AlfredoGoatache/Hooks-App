@@ -8,13 +8,14 @@ import ReactDOM from 'react-dom';
 // import { HookApp } from './HookApp';
 // import { FocusScreen } from './components/04-useRef/FocusScreen';
 // import { RealExampleRef } from './components/04-useRef/RealExampleRef';
-import { Layout } from './components/05-useLayoutEffect/LayoutEffect';
+// import { Layout } from './components/05-useLayoutEffect/LayoutEffect';
+import { Memorize } from './components/06-memos/Memorize';
 import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
   <br/>
-    <Layout/>
+    <Memorize/>
   </React.StrictMode>,
   document.getElementById('root')
 );
