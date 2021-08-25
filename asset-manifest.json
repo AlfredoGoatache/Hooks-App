@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Hooks-App/static/css/main.b0de9a35.chunk.css",
-    "main.js": "/Hooks-App/static/js/main.f5f8c52e.chunk.js",
-    "main.js.map": "/Hooks-App/static/js/main.f5f8c52e.chunk.js.map",
+    "main.js": "/Hooks-App/static/js/main.486976f2.chunk.js",
+    "main.js.map": "/Hooks-App/static/js/main.486976f2.chunk.js.map",
     "runtime-main.js": "/Hooks-App/static/js/runtime-main.ddcea03d.js",
     "runtime-main.js.map": "/Hooks-App/static/js/runtime-main.ddcea03d.js.map",
     "static/js/2.2cbacb21.chunk.js": "/Hooks-App/static/js/2.2cbacb21.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.ddcea03d.js",
     "static/js/2.2cbacb21.chunk.js",
     "static/css/main.b0de9a35.chunk.css",
-    "static/js/main.f5f8c52e.chunk.js"
+    "static/js/main.486976f2.chunk.js"
   ]
 }
