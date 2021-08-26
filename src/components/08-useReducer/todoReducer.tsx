@@ -1,6 +1,6 @@
 interface Todos {
     id: number;
-    desc: string;
+    desc: {};
     done: boolean;
 }
 

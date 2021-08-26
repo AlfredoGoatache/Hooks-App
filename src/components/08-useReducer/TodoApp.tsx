@@ -1,4 +1,5 @@
-import { useReducer } from "react"
+import { useReducer, useEffect } from 'react';
+import { useForm } from "../../hooks/useForm";
 import { todoReducer } from "./todoReducer"
 
 interface Todos {
@@ -7,24 +8,37 @@ interface Todos {
     done: boolean;
 }
 
-const initialState:Array<Todos>  = [{
-    id: new Date().getTime(),
-    desc: 'Aprender React',
-    done: false
-}]
+
+const init = () => {
+
+    let todos: any = localStorage.getItem('todos');
+
+    return JSON.parse( todos ) || [];
+}
 
 const TodoApp =()=> {
 
-    const [ todos, dispatch ] = useReducer(todoReducer, initialState);
+    const [ todos, dispatch ] = useReducer(todoReducer, [] , init);
 
-    console.log(todos);
+    const [ {description}, handleInputChange, reset]: any = useForm({
+        description:''
+    });
+
+    useEffect( ()=>{
+        localStorage.setItem('todos', JSON.stringify( todos ) )
+    }, [todos]);
+
 
     const handleSubmit = (e:any) => {
         e.preventDefault();
 
+        if( description.trim().length <= 1 ) {
+            return;
+        }
+
         const newTodo = {
             id: new Date().getTime(),
-            desc: 'Nueva tarea',
+            desc: description,
             done: false
         };
 
@@ -34,6 +48,7 @@ const TodoApp =()=> {
         }
 
         dispatch( action );
+        reset();
 
     }
 
@@ -52,7 +67,6 @@ const TodoApp =()=> {
                         todos.map( (todo:Todos, i:any) => (
                             <li
                             key={todo.id}
-                            
                             >
                                 <p className='text-left'>{i + 1}.{todo.desc}</p>
                                 <button className='btn btn-danger'>Borrar</button>
@@ -75,6 +89,8 @@ const TodoApp =()=> {
                             className='form-control'
                             placeholder='Agregar tareas ...'
                             autoComplete='off'
+                            value={description} 
+                            onChange={handleInputChange}
                         />
                         <button
                             type='submit'
