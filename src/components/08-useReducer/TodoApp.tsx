@@ -82,7 +82,7 @@ const TodoApp =()=> {
                             key={todo.id}
                             >
                                 <p 
-                                    className='text-left'
+                                    className={`text-left ${todo.done && 'complete' }`}
                                     onClick={()=> handleToggle(todo)}
                                 >
                                     {i + 1}.{todo.desc}
