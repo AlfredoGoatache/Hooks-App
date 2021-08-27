@@ -1,18 +1,11 @@
-interface Todo {
-  id: number;
-  todo: string;
-  done: boolean;
-}
+import { Action } from "../../interfaces/Action";
+import { Todo } from "../../interfaces/Todo";
 
-interface Action {
-  type: string;
-  payload: Todo;
-}
 
 const initialState: Array<Todo> = [
   {
     id: 1,
-    todo: "Comprar pan",
+    desc: "Comprar pan",
     done: false,
   },
 ];
@@ -29,7 +22,7 @@ let todos: Array<Todo> = todoReducer();
 
 const newTodo: Todo = { 
   id: 2,
-  todo: 'Comprar queso', 
+  desc: 'Comprar queso', 
   done: false
 };
 

@@ -1,12 +1,9 @@
 import { useReducer, useEffect } from 'react';
 import { useForm } from "../../hooks/useForm";
+import { Todo } from '../../interfaces/Todo';
 import { todoReducer } from "./todoReducer"
 
-interface Todos {
-    id: number;
-    desc: string;
-    done: boolean;
-}
+
 
 
 const init = () => {
@@ -28,7 +25,25 @@ const TodoApp =()=> {
         localStorage.setItem('todos', JSON.stringify( todos ) )
     }, [todos]);
 
+    //Para eleminar una tarea del listado de tareas
+    const handleDelete = (todoId:Todo) => {
+        const action ={
+            type:'delete',
+            payload: todoId
+        };
 
+        dispatch(action);
+    }
+    //Para tachar las tareas y afinalizadas
+    const handleToggle = ( todoId:Todo ) =>{
+        dispatch({
+            type: 'toggle',
+            payload: todoId
+        })
+    }
+
+
+    //Para agregar una tarea a la lista de tareas
     const handleSubmit = (e:any) => {
         e.preventDefault();
 
@@ -61,20 +76,27 @@ const TodoApp =()=> {
             <div className='row'>
 
                 <div className='col-7'>
-
-                    <ul className='list-gruop list-group-flush'>
-                    {
-                        todos.map( (todo:Todos, i:any) => (
+                {
+                        todos.map( (todo:Todo, i) => (
                             <li
                             key={todo.id}
                             >
-                                <p className='text-left'>{i + 1}.{todo.desc}</p>
-                                <button className='btn btn-danger'>Borrar</button>
+                                <p 
+                                    className='text-left'
+                                    onClick={()=> handleToggle(todo)}
+                                >
+                                    {i + 1}.{todo.desc}
+                                </p>
+                                <button 
+                                    className='btn btn-danger'
+                                    onClick={()=> handleDelete(todo)}
+                                >
+                                    Borrar
+                                </button>
                                 <hr />
                             </li>
                         ))
-                    }
-                    </ul>
+                }
 
                 </div>
 
@@ -103,9 +125,10 @@ const TodoApp =()=> {
                 </div>
 
             </div>
-
         </div>
+
     )
+            
 }
 
 export{
